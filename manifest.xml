@@ -1,4 +1,4 @@
-<manifest schemaversion="4.22" binaryversion="9.20">
+<manifest schemaversion="4.32" binaryversion="9.20">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -12,16 +12,18 @@
       <option switch="accepteula" name="AcceptEula" argument="none" noconfig="true" />
       <option switch="-" name="ConfigDefault" argument="none" noconfig="true" />
       <!-- Configuration file -->
-      <option switch="h" name="HashAlgorithms" argument="required" />
-      <option switch="n" name="NetworkConnect" argument="optional" rule="true" />
-      <option switch="l" name="ImageLoad" argument="optional" rule="true" />
+      <option switch="a" name="ArchiveDirectory" argument="required" />
       <option switch="d" name="DriverName" argument="required" />
       <option switch="dns" name="DnsQuery" argument="optional" rule="true" />
-      <option switch="k" name="ProcessAccess" argument="required" rule="true" forceconfig="true" />
-      <option switch="r" name="CheckRevocation" argument="none" />
       <option switch="g" name="PipeMonitoring" argument="required" rule="true" forceconfig="true" />
+      <option switch="h" name="HashAlgorithms" argument="required" />
+      <option name="DnsLookup" argument="required" />
+      <option switch="k" name="ProcessAccess" argument="required" rule="true" forceconfig="true" />
+      <option switch="l" name="ImageLoad" argument="optional" rule="true" />
+      <option switch="n" name="NetworkConnect" argument="optional" rule="true" />
+      <option switch="r" name="CheckRevocation" argument="none" />
     </options>
-    <filters default="is">is,is not,contains,contains any,contains all,excludes,begin with,end with,less than,more than,image</filters>
+    <filters default="is">is,is not,contains,contains any,is any,contains all,excludes,excludes any,excludes all,begin with,end with,less than,more than,image</filters>
   </configuration>
   <events>
     <event name="SYSMON_ERROR" value="255" level="Error" template="Error report" version="3">
@@ -53,7 +55,7 @@
       <data name="ParentImage" inType="win:UnicodeString" outType="xs:string" />
       <data name="ParentCommandLine" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_FILE_TIME" value="2" level="Informational" template="File creation time changed" rulename="FileCreateTime" ruledefault="include" version="4">
+    <event name="SYSMON_FILE_TIME" value="2" level="Informational" template="File creation time changed" rulename="FileCreateTime" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -96,7 +98,7 @@
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_DRIVER_LOAD" value="6" level="Informational" template="Driver loaded" rulename="DriverLoad" ruledefault="include" version="3">
+    <event name="SYSMON_DRIVER_LOAD" value="6" level="Informational" template="Driver loaded" rulename="DriverLoad" version="4">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ImageLoaded" inType="win:UnicodeString" outType="xs:string" />
@@ -204,6 +206,7 @@
       <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
       <data name="CreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="Hash" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Contents" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMON_SERVICE_CONFIGURATION_CHANGE" value="16" level="Informational" template="Sysmon config state changed" version="3">
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -266,6 +269,18 @@
       <data name="QueryStatus" inType="win:UnicodeString" outType="xs:string" />
       <data name="QueryResults" inType="win:UnicodeString" outType="xs:string" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+    </event>
+    <event name="SYSMON_FILE_DELETE" value="23" level="Informational" template="File Delete" rulename="FileDelete" version="5">
+      <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="ProcessGuid" inType="win:GUID" />
+      <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
+      <data name="IsExecutable" inType="win:Boolean" />
+      <data name="Archived" inType="win:UnicodeString" outType="xs:string" />
     </event>
   </events>
 </manifest>
