@@ -2,7 +2,8 @@
   "CompanyName": "Sysinternals - www.sysinternals.com",
   "FileDescription": "System activity monitor",
   "ProductName": "Sysinternals Sysmon",
-  "FileVersion": "4.0",
-  "ProductVersion": "4.0",
-  "LegalCopyright": "Copyright (C) 2014-2016 Mark Russinovich and Thomas Garnier"
+  "FileVersion": "5.02",
+  "ProductVersion": "5.02",
+  "LegalCopyright": "Copyright (C) 2014-2016 Mark Russinovich and Thomas Garnier",
+  "InternalName": "System Monitor"
 }
