@@ -1,4 +1,4 @@
-<manifest schemaversion="4.50" binaryversion="13.0">
+<manifest schemaversion="4.70" binaryversion="14.1">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -25,15 +25,15 @@
       <option switch="n" name="NetworkConnect" argument="optional" rule="true" />
       <option switch="r" name="CheckRevocation" argument="optional" />
     </options>
-    <filters default="is">is,is not,contains,contains any,is any,contains all,excludes,excludes any,excludes all,begin with,end with,less than,more than,image</filters>
+    <filters default="is">is,is not,contains,contains any,is any,contains all,excludes,excludes any,excludes all,begin with,not begin with,end with,not end with,less than,more than,image</filters>
   </configuration>
   <events>
-    <event name="SYSMON_ERROR" value="255" level="Error" template="Error report" version="3">
+    <event name="SYSMONEVENT_ERROR" value="255" level="Error" template="Error report" version="3">
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ID" inType="win:UnicodeString" outType="xs:string" />
       <data name="Description" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_CREATE_PROCESS" value="1" level="Informational" template="Process Create" rulename="ProcessCreate" ruledefault="include" version="5">
+    <event name="SYSMONEVENT_CREATE_PROCESS" value="1" level="Informational" template="Process Create" rulename="ProcessCreate" ruledefault="include" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -57,7 +57,7 @@
       <data name="ParentImage" inType="win:UnicodeString" outType="xs:string" />
       <data name="ParentCommandLine" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_FILE_TIME" value="2" level="Informational" template="File creation time changed" rulename="FileCreateTime" version="5">
+    <event name="SYSMONEVENT_FILE_TIME" value="2" level="Informational" template="File creation time changed" rulename="FileCreateTime" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -67,7 +67,7 @@
       <data name="CreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="PreviousCreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_NETWORK_CONNECT" value="3" level="Informational" template="Network connection detected" rulename="NetworkConnect" version="5">
+    <event name="SYSMONEVENT_NETWORK_CONNECT" value="3" level="Informational" template="Network connection detected" rulename="NetworkConnect" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -87,20 +87,20 @@
       <data name="DestinationPort" inType="win:UInt16" />
       <data name="DestinationPortName" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_SERVICE_STATE_CHANGE" value="4" level="Informational" template="Sysmon service state changed" version="3">
+    <event name="SYSMONEVENT_SERVICE_STATE_CHANGE" value="4" level="Informational" template="Sysmon service state changed" version="3">
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="State" inType="win:UnicodeString" outType="xs:string" />
       <data name="Version" inType="win:UnicodeString" outType="xs:string" />
       <data name="SchemaVersion" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_PROCESS_TERMINATE" value="5" level="Informational" template="Process terminated" rulename="ProcessTerminate" ruledefault="include" version="3">
+    <event name="SYSMONEVENT_PROCESS_TERMINATE" value="5" level="Informational" template="Process terminated" rulename="ProcessTerminate" ruledefault="include" version="3">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_DRIVER_LOAD" value="6" level="Informational" template="Driver loaded" rulename="DriverLoad" version="4">
+    <event name="SYSMONEVENT_DRIVER_LOAD" value="6" level="Informational" template="Driver loaded" rulename="DriverLoad" version="4">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ImageLoaded" inType="win:UnicodeString" outType="xs:string" />
@@ -109,7 +109,7 @@
       <data name="Signature" inType="win:UnicodeString" outType="xs:string" />
       <data name="SignatureStatus" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_IMAGE_LOAD" value="7" level="Informational" template="Image loaded" rulename="ImageLoad" version="3">
+    <event name="SYSMONEVENT_IMAGE_LOAD" value="7" level="Informational" template="Image loaded" rulename="ImageLoad" version="3">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -126,7 +126,7 @@
       <data name="Signature" inType="win:UnicodeString" outType="xs:string" />
       <data name="SignatureStatus" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_CREATE_REMOTE_THREAD" value="8" level="Informational" template="CreateRemoteThread detected" rulename="CreateRemoteThread" version="2">
+    <event name="SYSMONEVENT_CREATE_REMOTE_THREAD" value="8" level="Informational" template="CreateRemoteThread detected" rulename="CreateRemoteThread" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="SourceProcessGuid" inType="win:GUID" />
@@ -140,7 +140,7 @@
       <data name="StartModule" inType="win:UnicodeString" outType="xs:string" />
       <data name="StartFunction" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_RAWACCESS_READ" value="9" level="Informational" template="RawAccessRead detected" rulename="RawAccessRead" version="2">
+    <event name="SYSMONEVENT_RAWACCESS_READ" value="9" level="Informational" template="RawAccessRead detected" rulename="RawAccessRead" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -148,7 +148,7 @@
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="Device" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_ACCESS_PROCESS" value="10" level="Informational" template="Process accessed" rulename="ProcessAccess" version="3">
+    <event name="SYSMONEVENT_ACCESS_PROCESS" value="10" level="Informational" template="Process accessed" rulename="ProcessAccess" version="3">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="SourceProcessGUID" inType="win:GUID" />
@@ -161,7 +161,7 @@
       <data name="GrantedAccess" inType="win:HexInt32" />
       <data name="CallTrace" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_FILE_CREATE" value="11" level="Informational" template="File created" rulename="FileCreate" ruledefault="exclude" version="2">
+    <event name="SYSMONEVENT_FILE_CREATE" value="11" level="Informational" template="File created" rulename="FileCreate" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -170,7 +170,7 @@
       <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
       <data name="CreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_REG_KEY" value="12" level="Informational" template="Registry object added or deleted" rulename="RegistryEvent" ruledefault="exclude" version="2">
+    <event name="SYSMONEVENT_REG_KEY" value="12" level="Informational" template="Registry object added or deleted" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -179,7 +179,7 @@
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_REG_SETVALUE" value="13" level="Informational" template="Registry value set" rulename="RegistryEvent" ruledefault="exclude" version="2">
+    <event name="SYSMONEVENT_REG_SETVALUE" value="13" level="Informational" template="Registry value set" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -189,7 +189,7 @@
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
       <data name="Details" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_REG_NAME" value="14" level="Informational" template="Registry object renamed" rulename="RegistryEvent" ruledefault="exclude" version="2">
+    <event name="SYSMONEVENT_REG_NAME" value="14" level="Informational" template="Registry object renamed" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -199,7 +199,7 @@
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
       <data name="NewName" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_FILE_CREATE_STREAM_HASH" value="15" level="Informational" template="File stream created" rulename="FileCreateStreamHash" ruledefault="exclude" version="2">
+    <event name="SYSMONEVENT_FILE_CREATE_STREAM_HASH" value="15" level="Informational" template="File stream created" rulename="FileCreateStreamHash" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -210,12 +210,12 @@
       <data name="Hash" inType="win:UnicodeString" outType="xs:string" />
       <data name="Contents" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_SERVICE_CONFIGURATION_CHANGE" value="16" level="Informational" template="Sysmon config state changed" version="3">
+    <event name="SYSMONEVENT_SERVICE_CONFIGURATION_CHANGE" value="16" level="Informational" template="Sysmon config state changed" version="3">
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="Configuration" inType="win:UnicodeString" outType="xs:string" />
       <data name="ConfigurationFileHash" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_CREATE_NAMEDPIPE" value="17" level="Informational" template="Pipe Created" rulename="PipeEvent" ruledefault="exclude" version="1">
+    <event name="SYSMONEVENT_CREATE_NAMEDPIPE" value="17" level="Informational" template="Pipe Created" rulename="PipeEvent" ruledefault="exclude" version="1">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -224,7 +224,7 @@
       <data name="PipeName" inType="win:UnicodeString" outType="xs:string" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_CONNECT_NAMEDPIPE" value="18" level="Informational" template="Pipe Connected" rulename="PipeEvent" ruledefault="exclude" version="1">
+    <event name="SYSMONEVENT_CONNECT_NAMEDPIPE" value="18" level="Informational" template="Pipe Connected" rulename="PipeEvent" ruledefault="exclude" version="1">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -233,7 +233,7 @@
       <data name="PipeName" inType="win:UnicodeString" outType="xs:string" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_WMI_FILTER" value="19" level="Informational" template="WmiEventFilter activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
+    <event name="SYSMONEVENT_WMI_FILTER" value="19" level="Informational" template="WmiEventFilter activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -243,7 +243,7 @@
       <data name="Name" inType="win:UnicodeString" outType="xs:string" />
       <data name="Query" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_WMI_CONSUMER" value="20" level="Informational" template="WmiEventConsumer activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
+    <event name="SYSMONEVENT_WMI_CONSUMER" value="20" level="Informational" template="WmiEventConsumer activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -253,7 +253,7 @@
       <data name="Type" inType="win:UnicodeString" outType="xs:string" />
       <data name="Destination" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_WMI_BINDING" value="21" level="Informational" template="WmiEventConsumerToFilter activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
+    <event name="SYSMONEVENT_WMI_BINDING" value="21" level="Informational" template="WmiEventConsumerToFilter activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -262,7 +262,7 @@
       <data name="Consumer" inType="win:UnicodeString" outType="xs:string" />
       <data name="Filter" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_DNS_QUERY" value="22" level="Informational" template="Dns query" rulename="DnsQuery" ruledefault="exclude" version="5">
+    <event name="SYSMONEVENT_DNS_QUERY" value="22" level="Informational" template="Dns query" rulename="DnsQuery" ruledefault="exclude" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -272,7 +272,7 @@
       <data name="QueryResults" inType="win:UnicodeString" outType="xs:string" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_FILE_DELETE" value="23" level="Informational" template="File Delete" rulename="FileDelete" version="5">
+    <event name="SYSMONEVENT_FILE_DELETE" value="23" level="Informational" template="File Delete archived" rulename="FileDelete" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -284,7 +284,7 @@
       <data name="IsExecutable" inType="win:Boolean" />
       <data name="Archived" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_CLIPBOARD" value="24" level="Informational" template="Clipboard changed" rulename="ClipboardChange" version="5">
+    <event name="SYSMONEVENT_CLIPBOARD" value="24" level="Informational" template="Clipboard changed" rulename="ClipboardChange" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -295,13 +295,24 @@
       <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
       <data name="Archived" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_PROCESS_IMAGE_TAMPERING" value="25" level="Informational" template="Process Tampering" rulename="ProcessTampering" version="5">
+    <event name="SYSMONEVENT_PROCESS_IMAGE_TAMPERING" value="25" level="Informational" template="Process Tampering" rulename="ProcessTampering" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="Type" inType="win:UnicodeString" outType="xs:string" />
+    </event>
+    <event name="SYSMONEVENT_FILE_DELETE_DETECTED" value="26" level="Informational" template="File Delete logged" rulename="FileDeleteDetected" version="5">
+      <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="ProcessGuid" inType="win:GUID" />
+      <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
+      <data name="IsExecutable" inType="win:Boolean" />
     </event>
   </events>
 </manifest>
