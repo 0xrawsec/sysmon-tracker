@@ -1,4 +1,4 @@
-<manifest schemaversion="4.70" binaryversion="14.1">
+<manifest schemaversion="4.70" binaryversion="15.0">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -8,6 +8,7 @@
       <option switch="m" name="Manifest" argument="none" noconfig="true" exclusive="true" />
       <option switch="z" name="ClipboardInstance" argument="required" noconfig="true" exclusive="true" />
       <option switch="t" name="DebugMode" argument="optional" noconfig="true" />
+      <option switch="service" name="Service" argument="none" noconfig="true" />
       <option switch="s" name="PrintSchema" argument="optional" noconfig="true" exclusive="true" />
       <option switch="nologo" name="NoLogo" argument="none" noconfig="true" />
       <option switch="accepteula" name="AcceptEula" argument="none" noconfig="true" />
