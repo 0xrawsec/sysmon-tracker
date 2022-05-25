@@ -1,4 +1,4 @@
-<manifest schemaversion="4.70" binaryversion="15.0">
+<manifest schemaversion="4.81" binaryversion="16">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -25,6 +25,7 @@
       <option switch="l" name="ImageLoad" argument="optional" rule="true" />
       <option switch="n" name="NetworkConnect" argument="optional" rule="true" />
       <option switch="r" name="CheckRevocation" argument="optional" />
+      <option name="FieldSizes" argument="required" />
     </options>
     <filters default="is">is,is not,contains,contains any,is any,contains all,excludes,excludes any,excludes all,begin with,not begin with,end with,not end with,less than,more than,image</filters>
   </configuration>
@@ -57,6 +58,7 @@
       <data name="ParentProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="ParentImage" inType="win:UnicodeString" outType="xs:string" />
       <data name="ParentCommandLine" inType="win:UnicodeString" outType="xs:string" />
+      <data name="ParentUser" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_FILE_TIME" value="2" level="Informational" template="File creation time changed" rulename="FileCreateTime" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -67,6 +69,7 @@
       <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
       <data name="CreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="PreviousCreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_NETWORK_CONNECT" value="3" level="Informational" template="Network connection detected" rulename="NetworkConnect" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -100,6 +103,7 @@
       <data name="ProcessGuid" inType="win:GUID" />
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_DRIVER_LOAD" value="6" level="Informational" template="Driver loaded" rulename="DriverLoad" version="4">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -126,6 +130,7 @@
       <data name="Signed" inType="win:UnicodeString" outType="xs:string" />
       <data name="Signature" inType="win:UnicodeString" outType="xs:string" />
       <data name="SignatureStatus" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_CREATE_REMOTE_THREAD" value="8" level="Informational" template="CreateRemoteThread detected" rulename="CreateRemoteThread" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -140,6 +145,8 @@
       <data name="StartAddress" inType="win:UnicodeString" outType="xs:string" />
       <data name="StartModule" inType="win:UnicodeString" outType="xs:string" />
       <data name="StartFunction" inType="win:UnicodeString" outType="xs:string" />
+      <data name="SourceUser" inType="win:UnicodeString" outType="xs:string" />
+      <data name="TargetUser" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_RAWACCESS_READ" value="9" level="Informational" template="RawAccessRead detected" rulename="RawAccessRead" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -148,6 +155,7 @@
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="Device" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_ACCESS_PROCESS" value="10" level="Informational" template="Process accessed" rulename="ProcessAccess" version="3">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -161,6 +169,8 @@
       <data name="TargetImage" inType="win:UnicodeString" outType="xs:string" />
       <data name="GrantedAccess" inType="win:HexInt32" />
       <data name="CallTrace" inType="win:UnicodeString" outType="xs:string" />
+      <data name="SourceUser" inType="win:UnicodeString" outType="xs:string" />
+      <data name="TargetUser" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_FILE_CREATE" value="11" level="Informational" template="File created" rulename="FileCreate" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -170,6 +180,7 @@
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
       <data name="CreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_REG_KEY" value="12" level="Informational" template="Registry object added or deleted" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -179,6 +190,7 @@
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_REG_SETVALUE" value="13" level="Informational" template="Registry value set" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -189,6 +201,7 @@
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
       <data name="Details" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_REG_NAME" value="14" level="Informational" template="Registry object renamed" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -199,6 +212,7 @@
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
       <data name="NewName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_FILE_CREATE_STREAM_HASH" value="15" level="Informational" template="File stream created" rulename="FileCreateStreamHash" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -210,6 +224,7 @@
       <data name="CreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="Hash" inType="win:UnicodeString" outType="xs:string" />
       <data name="Contents" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_SERVICE_CONFIGURATION_CHANGE" value="16" level="Informational" template="Sysmon config state changed" version="3">
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -224,6 +239,7 @@
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="PipeName" inType="win:UnicodeString" outType="xs:string" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_CONNECT_NAMEDPIPE" value="18" level="Informational" template="Pipe Connected" rulename="PipeEvent" ruledefault="exclude" version="1">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -233,6 +249,7 @@
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="PipeName" inType="win:UnicodeString" outType="xs:string" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_WMI_FILTER" value="19" level="Informational" template="WmiEventFilter activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -272,6 +289,7 @@
       <data name="QueryStatus" inType="win:UnicodeString" outType="xs:string" />
       <data name="QueryResults" inType="win:UnicodeString" outType="xs:string" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_FILE_DELETE" value="23" level="Informational" template="File Delete archived" rulename="FileDelete" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -295,6 +313,7 @@
       <data name="ClientInfo" inType="win:UnicodeString" outType="xs:string" />
       <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
       <data name="Archived" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_PROCESS_IMAGE_TAMPERING" value="25" level="Informational" template="Process Tampering" rulename="ProcessTampering" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
@@ -303,6 +322,7 @@
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="Type" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
     </event>
     <event name="SYSMONEVENT_FILE_DELETE_DETECTED" value="26" level="Informational" template="File Delete logged" rulename="FileDeleteDetected" version="5">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
