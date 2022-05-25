@@ -1,4 +1,4 @@
-<manifest schemaversion="3.3" binaryversion="1.01">
+<manifest schemaversion="3.4" binaryversion="1.01">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -196,6 +196,32 @@
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
       <data name="PipeName" inType="win:UnicodeString" outType="xs:string" />
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+    </event>
+    <event name="SYSMON_WMI_FILTER" value="19" level="Informational" template="WmiEventFilter activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
+      <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Operation" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
+      <data name="EventNamespace" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Name" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Query" inType="win:UnicodeString" outType="xs:string" />
+    </event>
+    <event name="SYSMON_WMI_CONSUMER" value="20" level="Informational" template="WmiEventConsumer activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
+      <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Operation" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Name" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Type" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Destination" inType="win:UnicodeString" outType="xs:string" />
+    </event>
+    <event name="SYSMON_WMI_BINDING" value="21" level="Informational" template="WmiEventConsumerToFilter activity detected" rulename="WmiEvent" ruledefault="exclude" version="3">
+      <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Operation" inType="win:UnicodeString" outType="xs:string" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Consumer" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Filter" inType="win:UnicodeString" outType="xs:string" />
     </event>
   </events>
 </manifest>
