@@ -1,12 +1,12 @@
-<manifest schemaversion="4.1" binaryversion="8.00">
+<manifest schemaversion="4.21" binaryversion="9.10">
   <configuration>
     <options>
       <!-- Command-line only options -->
       <option switch="i" name="Install" argument="optional" noconfig="true" exclusive="true" />
       <option switch="c" name="Configuration" argument="optional" noconfig="true" exclusive="true" />
-      <option switch="u" name="UnInstall" argument="none" noconfig="true" exclusive="true" />
+      <option switch="u" name="UnInstall" argument="optional" noconfig="true" exclusive="true" />
       <option switch="m" name="Manifest" argument="none" noconfig="true" exclusive="true" />
-      <option switch="t" name="DebugMode" argument="none" noconfig="true" />
+      <option switch="t" name="DebugMode" argument="optional" noconfig="true" />
       <option switch="s" name="PrintSchema" argument="optional" noconfig="true" exclusive="true" />
       <option switch="nologo" name="NoLogo" argument="none" noconfig="true" />
       <option switch="accepteula" name="AcceptEula" argument="none" noconfig="true" />
@@ -16,6 +16,7 @@
       <option switch="n" name="NetworkConnect" argument="optional" rule="true" />
       <option switch="l" name="ImageLoad" argument="optional" rule="true" />
       <option switch="d" name="DriverName" argument="required" />
+      <option switch="dns" name="DnsQuery" argument="optional" rule="true" />
       <option switch="k" name="ProcessAccess" argument="required" rule="true" forceconfig="true" />
       <option switch="r" name="CheckRevocation" argument="none" />
       <option switch="g" name="PipeMonitoring" argument="required" rule="true" forceconfig="true" />
@@ -38,6 +39,7 @@
       <data name="Description" inType="win:UnicodeString" outType="xs:string" />
       <data name="Product" inType="win:UnicodeString" outType="xs:string" />
       <data name="Company" inType="win:UnicodeString" outType="xs:string" />
+      <data name="OriginalFileName" inType="win:UnicodeString" outType="xs:string" />
       <data name="CommandLine" inType="win:UnicodeString" outType="xs:string" />
       <data name="CurrentDirectory" inType="win:UnicodeString" outType="xs:string" />
       <data name="User" inType="win:UnicodeString" outType="xs:string" />
@@ -114,6 +116,7 @@
       <data name="Description" inType="win:UnicodeString" outType="xs:string" />
       <data name="Product" inType="win:UnicodeString" outType="xs:string" />
       <data name="Company" inType="win:UnicodeString" outType="xs:string" />
+      <data name="OriginalFileName" inType="win:UnicodeString" outType="xs:string" />
       <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
       <data name="Signed" inType="win:UnicodeString" outType="xs:string" />
       <data name="Signature" inType="win:UnicodeString" outType="xs:string" />
@@ -209,6 +212,7 @@
     </event>
     <event name="SYSMON_CREATE_NAMEDPIPE" value="17" level="Informational" template="Pipe Created" rulename="PipeEvent" ruledefault="exclude" version="1">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
@@ -217,6 +221,7 @@
     </event>
     <event name="SYSMON_CONNECT_NAMEDPIPE" value="18" level="Informational" template="Pipe Connected" rulename="PipeEvent" ruledefault="exclude" version="1">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
       <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
@@ -251,6 +256,16 @@
       <data name="User" inType="win:UnicodeString" outType="xs:string" />
       <data name="Consumer" inType="win:UnicodeString" outType="xs:string" />
       <data name="Filter" inType="win:UnicodeString" outType="xs:string" />
+    </event>
+    <event name="SYSMON_DNS_QUERY" value="22" level="Informational" template="Dns query" rulename="DnsQuery" ruledefault="exclude" version="5">
+      <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="ProcessGuid" inType="win:GUID" />
+      <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
+      <data name="QueryName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="QueryStatus" inType="win:UnicodeString" outType="xs:string" />
+      <data name="QueryResults" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Image" inType="win:UnicodeString" outType="xs:string" />
     </event>
   </events>
 </manifest>
