@@ -1,4 +1,4 @@
-<manifest schemaversion="4.21" binaryversion="9.10">
+<manifest schemaversion="4.22" binaryversion="9.20">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -21,7 +21,7 @@
       <option switch="r" name="CheckRevocation" argument="none" />
       <option switch="g" name="PipeMonitoring" argument="required" rule="true" forceconfig="true" />
     </options>
-    <filters default="is">is,is not,contains,excludes,begin with,end with,less than,more than,image</filters>
+    <filters default="is">is,is not,contains,contains any,contains all,excludes,begin with,end with,less than,more than,image</filters>
   </configuration>
   <events>
     <event name="SYSMON_ERROR" value="255" level="Error" template="Error report" version="3">
