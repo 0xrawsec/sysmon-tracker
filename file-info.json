@@ -2,8 +2,8 @@
   "CompanyName": "Sysinternals - www.sysinternals.com",
   "FileDescription": "System activity monitor",
   "ProductName": "Sysinternals Sysmon",
-  "FileVersion": "12.01",
-  "ProductVersion": "12.01",
-  "LegalCopyright": "Copyright (C) 2014-2020 Mark Russinovich and Thomas Garnier",
+  "FileVersion": "13.01",
+  "ProductVersion": "13.01",
+  "LegalCopyright": "Copyright (C) 2014-2021 Mark Russinovich and Thomas Garnier",
   "InternalName": "System Monitor"
 }

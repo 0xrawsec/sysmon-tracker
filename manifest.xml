@@ -1,4 +1,4 @@
-<manifest schemaversion="4.40" binaryversion="11.0">
+<manifest schemaversion="4.50" binaryversion="13.0">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -23,7 +23,7 @@
       <option switch="k" name="ProcessAccess" argument="required" rule="true" forceconfig="true" />
       <option switch="l" name="ImageLoad" argument="optional" rule="true" />
       <option switch="n" name="NetworkConnect" argument="optional" rule="true" />
-      <option switch="r" name="CheckRevocation" argument="none" />
+      <option switch="r" name="CheckRevocation" argument="optional" />
     </options>
     <filters default="is">is,is not,contains,contains any,is any,contains all,excludes,excludes any,excludes all,begin with,end with,less than,more than,image</filters>
   </configuration>
@@ -294,6 +294,14 @@
       <data name="ClientInfo" inType="win:UnicodeString" outType="xs:string" />
       <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
       <data name="Archived" inType="win:UnicodeString" outType="xs:string" />
+    </event>
+    <event name="SYSMON_PROCESS_IMAGE_TAMPERING" value="25" level="Informational" template="Process Tampering" rulename="ProcessTampering" version="5">
+      <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="ProcessGuid" inType="win:GUID" />
+      <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
+      <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Type" inType="win:UnicodeString" outType="xs:string" />
     </event>
   </events>
 </manifest>
