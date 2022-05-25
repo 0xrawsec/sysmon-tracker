@@ -29,3 +29,4 @@ jobs:
           pip install -r requirements.txt
           ./track.sh
           git push origin master
+          git push --tags
