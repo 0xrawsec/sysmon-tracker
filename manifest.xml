@@ -161,7 +161,7 @@
       <data name="GrantedAccess" inType="win:HexInt32" />
       <data name="CallTrace" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_FILE_CREATE" value="11" level="Informational" template="File created" rulename="FileCreate" ruledefault="include" version="2">
+    <event name="SYSMON_FILE_CREATE" value="11" level="Informational" template="File created" rulename="FileCreate" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
@@ -170,7 +170,7 @@
       <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
       <data name="CreationUtcTime" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_REG_KEY" value="12" level="Informational" template="Registry object added or deleted" rulename="RegistryEvent" ruledefault="include" version="2">
+    <event name="SYSMON_REG_KEY" value="12" level="Informational" template="Registry object added or deleted" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -179,7 +179,7 @@
       <data name="Image" inType="win:UnicodeString" outType="xs:string" />
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_REG_SETVALUE" value="13" level="Informational" template="Registry value set" rulename="RegistryEvent" ruledefault="include" version="2">
+    <event name="SYSMON_REG_SETVALUE" value="13" level="Informational" template="Registry value set" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -189,7 +189,7 @@
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
       <data name="Details" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_REG_NAME" value="14" level="Informational" template="Registry object renamed" rulename="RegistryEvent" ruledefault="include" version="2">
+    <event name="SYSMON_REG_NAME" value="14" level="Informational" template="Registry object renamed" rulename="RegistryEvent" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="EventType" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
@@ -199,7 +199,7 @@
       <data name="TargetObject" inType="win:UnicodeString" outType="xs:string" />
       <data name="NewName" inType="win:UnicodeString" outType="xs:string" />
     </event>
-    <event name="SYSMON_FILE_CREATE_STREAM_HASH" value="15" level="Informational" template="File stream created" rulename="FileCreateStreamHash" ruledefault="include" version="2">
+    <event name="SYSMON_FILE_CREATE_STREAM_HASH" value="15" level="Informational" template="File stream created" rulename="FileCreateStreamHash" ruledefault="exclude" version="2">
       <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
       <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
       <data name="ProcessGuid" inType="win:GUID" />
