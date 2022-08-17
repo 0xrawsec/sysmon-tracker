@@ -1,4 +1,4 @@
-<manifest schemaversion="4.81" binaryversion="16">
+<manifest schemaversion="4.82" binaryversion="17">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -334,6 +334,16 @@
       <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
       <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
       <data name="IsExecutable" inType="win:Boolean" />
+    </event>
+    <event name="SYSMONEVENT_FILE_BLOCK_EXE" value="27" level="Informational" template="File Block Executable" rulename="FileBlockExecutable" version="5">
+      <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="ProcessGuid" inType="win:GUID" />
+      <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
     </event>
   </events>
 </manifest>
