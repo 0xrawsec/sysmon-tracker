@@ -1,4 +1,4 @@
-<manifest schemaversion="4.83" binaryversion="17">
+<manifest schemaversion="4.90" binaryversion="18">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -8,6 +8,7 @@
       <option switch="m" name="Manifest" argument="none" noconfig="true" exclusive="true" />
       <option switch="z" name="ClipboardInstance" argument="required" noconfig="true" exclusive="true" />
       <option switch="t" name="DebugMode" argument="optional" noconfig="true" />
+      <option switch="btf" name="BTF" argument="optional" noconfig="true" />
       <option switch="service" name="Service" argument="none" noconfig="true" />
       <option switch="s" name="PrintSchema" argument="optional" noconfig="true" exclusive="true" />
       <option switch="nologo" name="NoLogo" argument="none" noconfig="true" />
@@ -355,6 +356,16 @@
       <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
       <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
       <data name="IsExecutable" inType="win:Boolean" />
+    </event>
+    <event name="SYSMONEVENT_FILE_EXE_DETECTED" value="29" level="Informational" template="File Executable Detected" rulename="FileExecutableDetected" version="5">
+      <data name="RuleName" inType="win:UnicodeString" outType="xs:string" />
+      <data name="UtcTime" inType="win:UnicodeString" outType="xs:string" />
+      <data name="ProcessGuid" inType="win:GUID" />
+      <data name="ProcessId" inType="win:UInt32" outType="win:PID" />
+      <data name="User" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Image" inType="win:UnicodeString" outType="xs:string" />
+      <data name="TargetFilename" inType="win:UnicodeString" outType="xs:string" />
+      <data name="Hashes" inType="win:UnicodeString" outType="xs:string" />
     </event>
   </events>
 </manifest>
