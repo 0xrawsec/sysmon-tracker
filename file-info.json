@@ -2,8 +2,8 @@
   "CompanyName": "Sysinternals - www.sysinternals.com",
   "FileDescription": "System activity monitor",
   "ProductName": "Sysinternals Sysmon",
-  "FileVersion": "15.12",
-  "ProductVersion": "15.12",
-  "LegalCopyright": "By Mark Russinovich and Thomas Garnier\nCopyright (C) 2014-2023 Microsoft Corporation\nUsing libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.",
+  "FileVersion": "15.14",
+  "ProductVersion": "15.14",
+  "LegalCopyright": "By Mark Russinovich and Thomas Garnier\nCopyright (C) 2014-2024 Microsoft Corporation\nUsing libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.",
   "InternalName": "System Monitor"
 }
