@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euxo
+
 function track () {
     ./tracker.py $@
 }
