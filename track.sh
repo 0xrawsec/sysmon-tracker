@@ -22,3 +22,7 @@ then
     git commit -m "$VERSION"
     git tag "$VERSION"
 fi
+
+date >> latest-run.txt
+git add -A
+git commit -m "keep-alive: repo"
