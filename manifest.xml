@@ -1,4 +1,4 @@
-<manifest schemaversion="4.90" binaryversion="18">
+<manifest schemaversion="4.91" binaryversion="18">
   <configuration>
     <options>
       <!-- Command-line only options -->
@@ -22,6 +22,8 @@
       <option switch="g" name="PipeMonitoring" argument="required" rule="true" forceconfig="true" />
       <option switch="h" name="HashAlgorithms" argument="required" />
       <option name="DnsLookup" argument="required" />
+      <option name="DriverQueueSize" argument="required" />
+      <option name="SigningQueueSize" argument="required" />
       <option switch="k" name="ProcessAccess" argument="required" rule="true" forceconfig="true" />
       <option switch="l" name="ImageLoad" argument="optional" rule="true" />
       <option switch="n" name="NetworkConnect" argument="optional" rule="true" />
